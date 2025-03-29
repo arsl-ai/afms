@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vehicle Tracking App</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .container {
+    width: 300px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #a8b932; /* Greenish color for the icon */
+    border-radius: 50%;
+    margin: 10px auto;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .car-icon {
+    font-size: 4em;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  .nav a {
+    text-decoration: none;
+    color: #333;
+  }
+  .map {
+    width: 100%;
+    height: 200px;
+    background-color: #ccc;
+    margin-top: 20px;
+    border-radius: 4px;
+  }
+  .ad {
+    width: 100%;
+    height: 100px;
+    background-color: #ffeb3b; /* Yellow background for ad */
+    margin-top: 20px;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="icon"></div>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>LOGIN</button>
+    <p style="text-align: center;">HARIANAZ</p>
+  </div>
+
+  <div class="container">
+    <div class="icon"></div>
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email ID">
+    <input type="password" placeholder="Password">
+    <button>REGISTER</button>
+    <p style="text-align: center;">Registration Page</p>
+  </div>
+
+  <div class="container">
+    <div class="icon"></div>
+    <input type="text" placeholder="Vehicle No">
+    <input type="text" placeholder="Engine No">
+    <input type="text" placeholder="Chassis No">
+    <input type="text" placeholder="RC No">
+    <input type="text" placeholder="Vehicle Type">
+    <div class="car-icon">🚗</div>
+    <button>Vehicle Registration</button>
+  </div>
+
+  <div class="container">
+    <div class="icon"></div>
+    <p>Welcome to Vehicle Tracking App</p>
+    <p>We provide real-time information about your vehicles.</p>
+    <div class="nav">
+      <a href="#">Add</a>
+      <a href="#">Tracking</a>
+      <a href="#">Frames</a>
+      <a href="#">Menu</a>
+    </div>
+    <div class="car-icon">🚗</div>
+  </div>
+
+  <div class="container">
+    <div class="icon"></div>
+    <p>Location and text information</p>
+    <div class="nav">
+      <a href="#">My Data</a>
+      <a href="#">Tracking</a>
+      <a href="#">Frames</a>
+      <a href="#">Menu</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="icon"></div>
+    <div class="map"></div>
+    <p>HARIANAZ</p>
+    <p>Vehicle location on map</p>
+    <div class="nav">
+      <a href="#">My Data</a>
+      <a href="#">Tracking</a>
+      <a href="#">Frames</a>
+      <a href="#">Menu</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="icon"></div>
+    <div class="ad">
+      <p>Place your ad here</p>
+      <p>Promote your business and reach a wider audience.</p>
+    </div>
+    <div class="nav">
+      <a href="#">My Data</a>
+      <a href="#">Tracking</a>
+      <a href="#">Frames</a>
+      <a href="#">Menu</a>
+    </div>
+  </div>
+
+</body>
+</html>

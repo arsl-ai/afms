@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Fleet Management Dashboard</h1>
+    </header>
+    <main>
+        <section id="data-input">
+            <h2>Data Input</h2>
+            <input type="file" id="file-input" accept=".xlsx" />
+        </section>
+        <section id="vehicle-selection">
+            <h2>Select Vehicle</h2>
+            <select id="vehicle-select">
+                <option value="">Select a vehicle</option>
+            </select>
+        </section>
+        <section id="map">
+            <h2>Vehicle Location</h2>
+            <div id="map" style="height: 500px; width: 100%;"></div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+

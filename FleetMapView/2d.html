@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map with Vehicle Movement and Important Places</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { width: 100%; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([17.7040, 83.2992], 14); // Centered at Iscon Temple
+
+        // Load OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define custom car icon
+        var vehicleIcon = L.icon({
+            iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Car_icon.svg',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38],
+            popupAnchor: [0, -28]
+        });
+
+        // Create vehicle marker
+        var vehicleMarker = L.marker([17.7040, 83.2992], { icon: vehicleIcon }).addTo(map);
+
+        // Define route coordinates on actual roads (follow streets)
+        var routeCoordinates = [
+            [17.7040, 83.2992], // Iscon Temple
+            [17.7105, 83.2853], // Major Junction 1
+            [17.7203, 83.2742], // Major Junction 2
+            [17.7342, 83.2450], // NAD Junction
+            [17.7437, 83.2275], // Traffic Signal Junction
+            [17.7097, 83.2182], // Gajuwaka
+            [17.6611, 83.2047], // Kurmannapalem
+            [17.6374, 83.1952]  // Telugu Talli Statue
+        ];
+
+        // Draw the route as a polyline
+        var routeLine = L.polyline(routeCoordinates, {
+            color: 'red',
+            dashArray: '5, 5',
+            weight: 4
+        }).addTo(map);
+
+        // Define important places with custom markers (traffic signals, junctions, etc.)
+        var importantPlaces = [
+            { coords: [17.7437, 83.2275], name: "NAD Traffic Signal", icon: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Traffic_light_icon.svg' },
+            { coords: [17.7105, 83.2853], name: "Junction 1", icon: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Location_dot_blue.svg' },
+            { coords: [17.7342, 83.2450], name: "NAD Junction", icon: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Location_dot_blue.svg' },
+            { coords: [17.7097, 83.2182], name: "Gajuwaka Junction", icon: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Location_dot_blue.svg' }
+        ];
+
+        // Add markers for important places with custom icons
+        importantPlaces.forEach(function(place) {
+            var placeIcon = L.icon({
+                iconUrl: place.icon,
+                iconSize: [30, 30],
+                iconAnchor: [15, 30]
+            });
+            L.marker(place.coords, { icon: placeIcon })
+                .bindPopup(place.name)
+                .addTo(map);
+        });
+
+        // Function to animate vehicle movement along the route
+        var currentIndex = 0;
+        function moveVehicle() {
+            if (currentIndex < routeCoordinates.length) {
+                vehicleMarker.setLatLng(routeCoordinates[currentIndex]);
+                currentIndex++;
+                map.setView(routeCoordinates[currentIndex], 15); // Adjust zoom level to focus on the vehicle
+                setTimeout(moveVehicle, 1000); // Move every second
+            }
+        }
+
+        // Start the vehicle movement
+        moveVehicle();
+    </script>
+</body>
+</html>

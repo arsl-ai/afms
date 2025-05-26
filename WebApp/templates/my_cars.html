@@ -1,0 +1,87 @@
+{% extends "menu.html" %}
+
+
+{% block content %}
+
+
+{% block menu_block %}
+{% set menu.active_page = "/my_cars" %}
+{{ super() }}
+{% endblock %}
+
+{% include 'car_track_modal.html' %}
+
+<div class="flex justify-center h-screen">
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right">
+            <thead class="text-xs text-gray-700 uppercase">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        VIN / Registartion
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Vehicle
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Make
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Model
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <span class="sr-only">Track</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b  hover:bg-gray-50 dark:hover:bg-gray-100">
+                    <th scope="row" class="px-6 py-4 font-medium">
+                        TG 05 4244
+                    </th>
+                    <td class="px-6 py-4">
+                        Innova HyCross
+                    </td>
+                    <td class="px-6 py-4">
+                        Toyota
+                    </td>
+                    <td class="px-6 py-4">
+                        2024
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <button data-modal-target="medium-modal" data-modal-toggle="medium-modal"
+                            class="block text-white bg-blue-200 hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-400"
+                            type="button">
+                            Track
+                        </button>
+                    </td>
+                </tr>
+                <tr class="bg-white border-b  hover:bg-gray-50 dark:hover:bg-gray-100">
+                    <th scope="row" class="px-6 py-4 font-medium">
+                        JDT23123434R4345
+                    </th>
+                    <td class="px-6 py-4">
+                        Corolla
+                    </td>
+                    <td class="px-6 py-4">
+                        Toyota
+                    </td>
+                    <td class="px-6 py-4">
+                        2007
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <button data-modal-target="large-modal" data-modal-toggle="large-modal"
+                            class="block text-white bg-blue-200 hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-400"
+                            type="button">
+                            Track
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+</div>
+{% endblock %}

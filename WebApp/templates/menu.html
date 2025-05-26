@@ -1,0 +1,45 @@
+{% set menu = namespace(
+items= {
+'/my_cars': 'My Cars' ,
+'/add_car': 'Add a Car' ,
+'/track_cars': 'Track My Cars'
+}
+, active_page = '/my_cars')%}
+{% extends "base.html" %}
+
+
+{% block title %}{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+{% block menu_block %}
+
+<div
+    class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-700 dark:border-gray-700">
+    <ul class="flex flex-wrap -mb-px">
+        {% for key in menu.items %}
+        {% if key == menu.active_page %}
+        {% set menu.class = "inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active
+        dark:text-blue-500" %}
+        {% else %}
+        {% set menu.class = "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600
+        hover:border-gray-300 dark:hover:text-gray-300" %}
+        {% endif %}
+        <li class="me-2">
+            <a href="{{key}}" class="{{menu.class}}">{{menu.items[key]}}
+            </a>
+        </li>
+        {% endfor %}
+        <li>
+            <a class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">Notes</a>
+        </li>
+    </ul>
+</div>
+
+{% endblock %}
+
+{% endblock %}

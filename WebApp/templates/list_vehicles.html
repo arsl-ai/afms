@@ -5,11 +5,11 @@
 
 
 {% block menu_block %}
-{% set menu.active_page = "/my_cars" %}
+{% set menu.active_page = "/" %}
 {{ super() }}
 {% endblock %}
 
-{% include 'car_track_modal.html' %}
+{% include 'track_vehicle_modal.html' %}
 
 <div class="flex justify-center h-screen">
     <div class="relative overflow-x-auto">
@@ -34,48 +34,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b  hover:bg-gray-50 dark:hover:bg-gray-100">
+                {% for key in vehicles.keys() %}
+                    {% set vehicle, locations =  vehicles[key].vehicle, vehicles[key].locations %}
+                    <tr class="bg-white border-b  hover:bg-gray-50 dark:hover:bg-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium">
-                        TG 05 4244
+                        {{vehicle.vehicleRegistrationId}}
                     </th>
                     <td class="px-6 py-4">
-                        Innova HyCross
+                        {{vehicle.name}}
                     </td>
                     <td class="px-6 py-4">
-                        Toyota
+                         {{vehicle.make}}
                     </td>
                     <td class="px-6 py-4">
-                        2024
+                        {{vehicle.model}}
                     </td>
                     <td class="px-6 py-4 text-right">
-                        <button data-modal-target="medium-modal" data-modal-toggle="medium-modal"
+                        <button onclick='set_track_modal_heading(vehicle_name= "{{vehicle.name}}", vehicle_tracking_modal_div_id="vehicle-track-modal"); track_my_vehicle(vehicle = {{ vehicle | tojson | safe }}, locations= {{ locations | tojson | safe }}, div_id="track_my_vehicle_id", vehicle_tracking_id= "{{key}}")' data-modal-target="vehicle-track-modal" data-modal-toggle="vehicle-track-modal"
                             class="block text-white bg-blue-200 hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-400"
-                            type="button">
+                            type="button" >
                             Track
                         </button>
                     </td>
                 </tr>
-                <tr class="bg-white border-b  hover:bg-gray-50 dark:hover:bg-gray-100">
-                    <th scope="row" class="px-6 py-4 font-medium">
-                        JDT23123434R4345
-                    </th>
-                    <td class="px-6 py-4">
-                        Corolla
-                    </td>
-                    <td class="px-6 py-4">
-                        Toyota
-                    </td>
-                    <td class="px-6 py-4">
-                        2007
-                    </td>
-                    <td class="px-6 py-4 text-right">
-                        <button data-modal-target="large-modal" data-modal-toggle="large-modal"
-                            class="block text-white bg-blue-200 hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-400"
-                            type="button">
-                            Track
-                        </button>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -83,5 +65,6 @@
 
 
 
-</div>
+<script src="{{ url_for('static',filename='js/track_vehicles.js') }}"></script>
+
 {% endblock %}

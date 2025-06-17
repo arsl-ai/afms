@@ -1,0 +1,18 @@
+{% extends "menu.html" %}
+
+{% block content %}
+
+{% block menu_block %}
+{% set menu.active_page = "/track_cars" %}
+{{ super() }}
+{% endblock %}
+
+<div class="flex justify-center h-screen">
+    <div id="track_map_id" style="width: 800px; height: 500px;">
+    </div>
+</div>
+
+<script src="{{ url_for('static',filename='js/track_vehicles.js') }}"></script>
+<script>track_my_vehicles(locations = {{ locations| tojson | safe }}, google_map_id = 'track_map_id')</script>
+
+{% endblock %}
